@@ -1,75 +1,16 @@
 $(document).ready(function () {
     var posts = [
         {
-            title: 'Blog Post 1',
-            subtitle: null,
-            postedOn: 'November 1, 2015',
-            href: 'post.html',
+            title: 'StoneQuest\'s Origins',
+            subtitle: 'How and why StoneQuest began.',
+            postedOn: 'November 15, 2015',
+            href: 'posts/stonequest-begins.html',
             tags: [
-                'blogging',
-                'blogtastic',
-                'blogarithm'
+                'stonequest',
+                'beginnings',
+                'java',
+                'swing'
             ]
-        },
-        {
-            title: 'Blog Post 2',
-            subtitle: null,
-            postedOn: 'November 2, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 3',
-            subtitle: null,
-            postedOn: 'November 3, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 4',
-            subtitle: null,
-            postedOn: 'November 4, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 5',
-            subtitle: null,
-            postedOn: 'November 5, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 6',
-            subtitle: null,
-            postedOn: 'November 6, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 7',
-            subtitle: null,
-            postedOn: 'November 7, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 8',
-            subtitle: null,
-            postedOn: 'November 8, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 9',
-            subtitle: null,
-            postedOn: 'November 9, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 10',
-            subtitle: null,
-            postedOn: 'November 10, 2015',
-            href: 'post.html'
-        },
-        {
-            title: 'Blog Post 11',
-            subtitle: null,
-            postedOn: 'November 11, 2015',
-            href: 'post.html'
         }
     ];
 
@@ -110,10 +51,6 @@ $(document).ready(function () {
 
     (function () {
         for (var i = 0; i < 5; ++i) {
-            if (!posts[i]) {
-                break;
-            }
-
             setBlogPost(posts[i], i);
         }
 

@@ -1,0 +1,24 @@
+.site-heading > h1 {
+	text-shadow: 1px 1px 1px black;
+}
+
+.search-bar {
+	float: left;
+	position: relative;
+	top: 19px;
+	width: 200px;
+}
+.search-bar > div > span > button {
+	padding: 0 10px 0 10px;
+	font-size: 12px;
+	height: 25px;
+}
+.search-bar > div > input {
+	height: 25px;
+	border-radius: 0px;
+}
+
+.tags {
+    font-size: 11px;
+    color: gray;
+}

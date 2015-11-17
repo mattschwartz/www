@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>StoneQuest Begins | StoneQuest</title>
+    <title>Never Satisfied | StoneQuest</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -56,10 +56,13 @@
                         <a href="../index.html">Home</a>
                     </li>
                     <li>
-                        <a href="never-satisfied.html">Next Post</a>
+                        <a href="stonequest-begins.html">Previous Post</a>
                     </li>
                     <li>
-                        <a href="../contact.html">Contact</a>
+                        <a href="#">Next Post</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -75,9 +78,8 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>StoneQuest Begins</h1>
-                        <h2 class="subheading">How A Simple Roguelike Turned Into A Dream</h2>
-                        <span class="meta">Posted on November 15, 2015</span>
+                        <h1>Never Satisfied</h1>
+                        <span class="meta">Posted on November 17, 2015</span>
                     </div>
                 </div>
             </div>
@@ -89,59 +91,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <h2>Why It Began</h2>
+                    <h2>Never Satisfied</h2>
                     <p>
-                        Since before I was given my first computer, I was fascinated by them. I loved how the circuitry looked and imagined them
-                        as miniature towns, with buildings and roads. When I got my first computer, running Windows 95, I
-                        spent hours in command prompt trying to make it do simple thing because it made me feel like I was
-                        really controlling the computer.
+                        I prototyped an interface next that I would end up using for over a year.
+                        It had everything a basic roguelike needed: an inventory, a character sheet
+                        and a world log history to keep track of the events taking place around the
+                        player.
                     </p>
-                    <p>
-                        Naturally, I fell in love with computer games. The first computer game I can remember playing, apart from Solitaire, Minesweeper
-                        and Ski, was this marble puzzle game at my uncle's house. From there, I began playing all kinds of
-                        games, always trying new genres of games, experimental games, etc.
-                    </p>
-                    <p>
-                        As I began my college education, I worked more and more on personal projects - small things that I found fun to program.
-                        In December 2011, I decided to create a game, a very simple roguelike, with ASCII graphics and only
-                        keyboard input. I started in C using the <a href="https://en.wikipedia.org/wiki/Ncurses">Ncurses</a>                        library. To speed up production and focus solely on game design, I abandoned the C project and began
-                        again in Java, using the Swing library since I was very familiar with both at this point.
-                    </p>
-                    <a href="../img/progress/1.png" target="_blank">
-                        <img class="img-responsive" src="../img/progress/1.png" alt="Java Swing screenshot">
+                    <a href="../img/progress/2.png" target="_blank">
+                        <img class="img-responsive" src="../img/progress/2.png" alt="Java interface">
                     </a>
-                    <span class="caption text-muted">The earliest screenshot of StoneQuest I have. Written in Java using the Swing framework.</span>
-                    <h2>Iterative Development</h2>
+                    <span class="caption text-muted">The earliest real interface for StoneQuest</span>
                     <p>
-                        From this point on, in early 2012, I began a series of constant 
-                        tweaking and perfecting. Every few months, I would launch the
-                        game and realize how this or that could be improved, and I would
-                        spend as much time as necessary to ensure it was perfect.
+                        The red <code><span class="text-danger">@</span></code> represents the player character,
+                        the purple <code><span style="color: purple">#</span></code> represents walkable tiles
+                        (note the player has moved far out of bounds in this screenshot...), green 
+                        <code><span class="text-success">|</span></code> and <code><span class="text-success">-</span></code>
+                        represent walls and the green
+                        <code><span class="text-success">%</span></code> was a profoundly simple enemy
+                        character. The text box at the bottom left reports events happening around the player 
+                        in the world, the box to the right of that is the player's character sheet and the taller
+                        box on the far right is the player's inventory.
                     </p>
                     <p>
-                        The UI got the most obvious overhaul over the years, but internally,
-                        I spent countless hours fighting Java and Swing (and eventually Canvas)
-                        to get it to do what I wanted it to do. I wrote a rasterizer for images
-                        and fonts, a custom event handler that sat on top of Swing's for key
-                        and mouse input and of course the game loop and object interactivity and
-                        collision-detection.
-                    </p> 
-                    <p>
-                        I was never satisfied with anything for too long. Arguably, this was a flaw
-                        in the internal management for the game development - it prevented a game
-                        that could have been released and put aside years ago. Honestly, the game
-                        was in a shippable state in the summer of 2012. But with as much time as I had
-                        spent designing, programming and thinking about StoneQuest, I couldn't leave
-                        it at that. I decided it would be the culmination of my near-decade's experience
-                        of programming and roughly 17 years of games experience; it would be
-                        my dream.
+                        For over a month, I doodled in notebooks and pseudocoded algorithms to
+                        randomly generate my levels, enemies and items. I spent so much more time
+                        on the fundamental game design than actually designing the game during
+                        this period. When I decided to start implementing some things, I also 
+                        started the project over from scratch. Dozens of hours later, I
+                        came up with this:
                     </p>
-                    <h2>Story Time</h2>
-                    <p>
-                        When I wasn't writing working directly on programming the game, I was
-                        outside thinking of the story I wanted StoneQuest to have. I'll cover
-                        the entire story (so far) in another blog post, <a href="story-time.html">here</a>.
-                    </p>
+                    <a href="../img/progress/3.png" target="_blank">
+                        <img class="img-responsive" src="../img/progress/3.png" alt="Java interface">
+                    </a>
+                    <span class="caption text-muted">The earliest real interface for StoneQuest</span>
                 </div>
             </div>
         </div>

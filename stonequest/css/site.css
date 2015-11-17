@@ -1,4 +1,4 @@
-.site-heading > h1 {
+.site-heading, .post-heading > h1 {
 	text-shadow: 1px 1px 1px black;
 }
 
@@ -31,4 +31,9 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+.img-responsive {
+    display: block;
+    margin: auto auto;
 }

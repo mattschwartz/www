@@ -22,3 +22,13 @@
     font-size: 11px;
     color: gray;
 }
+
+/* Owl Carousel */
+#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}

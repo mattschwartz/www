@@ -4,3 +4,8 @@
 a.navbar-brand:hover {
     color: #00bc8c !important;
 }
+.badge-alert { 
+    color: black;
+    background-color: #ffff90;
+    border: 1px solid #ffaa00;
+}

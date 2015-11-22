@@ -9,3 +9,8 @@ a.navbar-brand:hover {
     background-color: #ffff90;
     border: 1px solid #ffaa00;
 }
+
+.expando-div { 
+    max-height: 350px; 
+    overflow: scroll; 
+}

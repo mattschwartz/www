@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Cady</title>
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/prism.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/helpers.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+    <!-- <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">cassii.us</a>
+            </div>
+            <div class="collapse navbar-collapse" id="#">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="page-scroll">
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a class="page-scroll" href="#release">Release Status</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="col-md-8 col-md-offset-2">
+        <h1 class="text-center pad-top-xlg">Cady</h1>
+        <hr>
+
+        <section id="disclaimer">
+            <small><span class="text-bold">Notice:</span> While Cady has been written almost entirely by myself, it was done
+            for and while employed by <a href="http://www.tradelogic.com">Tradelogic Corporation</a></small>.
+            You can find the official website for Cady hosted at <a href="http://cady.io">Cady.io</a>.
+        </section>
+
+        <div class="pad-top-lg"></div>
+
+        <section id="about">
+            <h3>About</h3>
+            <p>
+                Cady is a set of tools and APIs that allow developers and technical users the ability to extend their projects and computers.
+                Written in C#, Cady provides a simple interface for other users to write extensions openly while providing
+                other extensions and users means of accessing and executing their extension's functionality.
+            </p>
+
+            <p>
+                The purpose of Cady is that it would allow someone to write a simple or complex utility that could do virtually anything
+                one time and it could be used in any other language or even from the command line. Cady has APIs in C# and
+                Java with Python, PHP, C, C++ and Javascript planned. Another feature of Cady is that its extensions themselves
+                are extensible. Other extensions can essentially hook into them, overriding or adding to existing functionality.
+            </p>
+
+            <p>
+                Fundamentally, Cady extensions are comprised of two core properties: hooks and services. A hook is like an exposed method
+                - the user or programmer invokes a hook from the command line or API and can pass it parameters, if the hook
+                accepts parameters, and the extension will execute code. A service is a long-running process, like a daemon
+                or Windows service.
+            </p>
+
+            <h3>Example</h3>
+            <p>
+                Here is a very simple example extension that one might write for Cady.
+            </p>
+
+            <pre class="line-numbers expando-div"><code class="language-csharp">using System;
+using Cady.SDK;
+
+namespace Samples
+{
+    public class MyExtension : CadyExtension
+    {
+        public override string Name { get { return "sample-extension"; } }
+        public override string DisplayName { get { return "My sample extension"; } }
+        public override string Description 
+        { 
+            get 
+            { 
+                return "Used to show the ins and outs of creating Cady extensions"; 
+            } 
+        }
+        public override SemanticVersion Version { get { return "1.0.0"; } }
+        public override string Author { get { return "Cady.io"; } }
+        public override string Email { get { return "contact@cady.io"; } }
+        public override string Url { get { return "http://cady.io"; } }
+        
+        // You can override this method if you need to provide for some setup
+        public override void Load() { }
+
+        // You can override these methods if you need to do any setup or
+        // teardown when the extension is installed or uninstalled
+        public override void Install() { }
+        public override void Uninstall() { }
+    }
+    
+    public class MyHook : CadyHook
+    {
+        public MyHook()
+            : base (ExecuteHook)
+        {
+        }
+        
+        public static HookResult ExecuteHook(HookArgs args)
+        {
+            Console.WriteLine("Hello world!");
+            
+            return HookResult.Success;
+        }
+    }
+    
+    public class MyService : CadyService
+    {
+        public override bool OnStart()
+        {
+            // Perform a background task.
+            return true;
+        }
+        
+        public override bool OnStop()
+        {
+            // Stop the background task.
+            return true;
+        }
+    }
+}
+</code></pre>
+        </section>
+
+        <div class="pad-top-lg"></div>
+
+        <section id="release">
+            <h3>Release Status</h3>
+            <p>
+                Cady is currently in a pre-release stage of development. It has a majority of its functionality implemented, but other projects
+                have taken priority at the moment and as such all official development of Cady has halted. It is unknown
+                at this time when development will continue and when version 1.0 will be released.
+            </p>
+        </section>
+
+        <section id="contact">
+        </section>
+
+        <hr>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row pad-btm-sm">
+                    <div class="col-sm-12">View the site's source code <a href="https://github.com/mattschwartz/www" target="_blank">here</a>.</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">Copyright &copy; Matt Schwartz 2015</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">This page was built using <a href="http://getbootstrap.com">Bootstrap</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="pad-lg"></div>
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/prism.min.js"></script>
+</body>
+
+</html>

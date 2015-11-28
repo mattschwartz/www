@@ -28,27 +28,27 @@ $(document).ready(function () {
     });
 
     $('#rogre-modal').on('show.bs.modal', function () {
-      $('#rogre-modal div.modal-body').html('<iframe class="youtube-modal" src="https://www.youtube.com/embed/pd1MyZFK1-8" frameborder="0" allowfullscreen></iframe>');
+        $('#rogre-modal div.modal-body').html('<iframe class="youtube-modal" src="https://www.youtube.com/embed/pd1MyZFK1-8" frameborder="0" allowfullscreen></iframe>');
     });
 
     $('#rogre-modal').on('hide.bs.modal', function () {
-      $('#rogre-modal div.modal-body').html('');
+        $('#rogre-modal div.modal-body').html('');
     });
 
     $('#after-modal').on('hide.bs.modal', function () {
-      $('#after-modal div.modal-body').html('');
+        $('#after-modal div.modal-body').html('');
     });
 
     $('#after-modal').on('show.bs.modal', function () {
-      $('#after-modal div.modal-body').html('<iframe class="vimeo-modal" src="https://player.vimeo.com/video/113364865" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+        $('#after-modal div.modal-body').html('<iframe class="vimeo-modal" src="https://player.vimeo.com/video/113364865" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
     })
 
     $('#print-resume').click(function () {
-      var html = $('#printer-friendly-resume').html();
-      var w = window.open();
-      w.document.write(html);
-      w.window.print();
-      w.window.close();
+        var html = $('#printer-friendly-resume').html();
+        var w = window.open();
+        w.document.write(html);
+        w.window.print();
+        w.window.close();
     });
 });
 

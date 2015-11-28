@@ -25,6 +25,12 @@
 .intro-header .site-heading,
 .intro-header .page-heading {
   text-align: center;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
 }
 .intro-header .site-heading h1,
 .intro-header .page-heading h1 {

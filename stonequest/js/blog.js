@@ -1,16 +1,6 @@
 $(document).ready(function () {
     var posts = [
         {
-            title: 'Story Time',
-            postedOn: 'November 21, 2015',
-            href: 'posts/story-time.html',
-            tags: [
-                'stonequest',
-                'java',
-                'story'
-            ]
-        },
-        {
             title: 'Never Satisfied',
             postedOn: 'November 17, 2015',
             href: 'posts/never-satisfied.html',

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
     <title>After</title>
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -14,6 +14,9 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="../css/main.css" rel="stylesheet">
     <link href="../css/helpers.css" rel="stylesheet">
+    <link href="../css/owl.carousel.css" rel="stylesheet">
+    <link href="../css/owl.theme.css" rel="stylesheet">
+    <link href="../css/owl.transitions.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!--<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
@@ -40,16 +43,13 @@
                         <a class="page-scroll" href="#trailer">Trailer</a>
                     </li>
                     <li class="page-scroll">
-                        <a class="page-scroll" href="#story">Story</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a class="page-scroll" href="#mechanics">Mechanics</a>
+                        <a class="page-scroll" href="#story">Story &amp; Mechanics</a>
                     </li>
                     <li class="page-scroll">
                         <a class="page-scroll" href="#my-role">My Role</a>
                     </li>
                     <li class="page-scroll">
-                        <a class="page-scroll" href="#play">Play Now</a>
+                        <a class="page-scroll" href="#play">Download</a>
                     </li>
                 </ul>
             </div>
@@ -70,9 +70,20 @@
         </div>
     </header>
     <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        
+        <div id="after-shots" class="owl-carousel">
+            <div class="item"><img class="lazyOwl" data-src="img/carousel/1.PNG" alt="Image"></div>
+            <div class="item"><img class="lazyOwl" data-src="img/carousel/2.PNG" alt="Image"></div>
+            <div class="item"><img class="lazyOwl" data-src="img/carousel/3.PNG" alt="Image"></div>
+            <div class="item"><img class="lazyOwl" data-src="img/carousel/4.PNG" alt="Image"></div>
+            <div class="item"><img class="lazyOwl" data-src="img/carousel/5.PNG" alt="Image"></div>
+            <div class="item"><img class="lazyOwl" data-src="img/carousel/6.PNG" alt="Image"></div>
+            <div class="item"><img class="lazyOwl" data-src="img/carousel/7.PNG" alt="Image"></div>
+        </div>
+        
         <h1>Authors &amp; Roles</h1>
         <p>
-            <u>After</u> was created by:
+            After was created by:
             <ul>
                 <li>John Dodson (Art director)</li>
                 <li>Rob Luckfield (Sound engineer)</li>
@@ -85,9 +96,10 @@
 
         <section id="trailer">
             <h1>Trailer</h1>
+            <small>by Taylor Womack</small>
+            
             <div class="text-center">
-                <iframe src="https://player.vimeo.com/video/113364865?portrait=0" width="500px" height="281px" frameborder="0" webkitallowfullscreen
-                mozallowfullscreen allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/113364865?portrait=0" width="500px" height="281px" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
             <hr>
         </section>
@@ -95,19 +107,18 @@
         <section id="story">
             <h2>Story</h2>
             <p>
-                The game takes place in a post-apocalyptic world in which all life is presumed extinct. 
-                The unnamed protagonist, controlled by the player awakens in a city devastated by an
-                unknown disaster and in order to find out what happened and who he is, he must uncover
-                the truth.
+                After takes place in the ruins of a city in the near future. All life has disappeared
+                except for a man who has forgotten everything. He must learn what happened to the city, what
+                happened to the entire planet and what happened to its inhabitants before he can learn what
+                happened to himself.
             </p>
-            <hr>
-        </section>
-
-        <section id="mechanics">
             <h2>Mechanics</h2>
             <p>
-                <u>After</u> is a puzzle platformer, focused on telling the story of the Traveler and the city 
-                in which he finds himself through the environment and puzzles.
+                After is a puzzle platformer, focused on telling the story of the traveler and the city 
+                in which he finds himself through the environment and puzzles. After features three main
+                levels, with a few more transitory levels, with unique puzzle elements in each. As a Unity game,
+                there are builds available for Mac, PC and Linux as well as a mobile application available for
+                Android devices (via an .apk file). 
             </p>
             <hr>
         </section>
@@ -115,9 +126,9 @@
         <section id="my-role">
             <h2>My Role</h2>
             <p>
-                <u>After</u> was created by a group of five students, including myself, through UT's GAMMA game design program.
+                After was created by a group of five students, including myself, through UT's GAMMA game design program.
                 The course was designed to be student-driven, allowing teams to design their own games with minimal constraints
-                and guidance on the part of the instructors. My role in <u>After</u> was one of the two programmers and lead
+                and guidance on the part of the instructors. My role in After was one of the two programmers and lead
                 programmer for mobile direction for the game. More specifically, I:
                 <ul>
                     <li><b>Designed the puzzle game loop</b>
@@ -145,11 +156,65 @@
         <section id="play">
             <h2>Play</h2>
             <p>
-                The game is hosted on the University of Texas' game development page, <a hrerf="http://www.cs.utexas.edu/~gamedev/fall-2014/Transient-Games/Release.html">here</a>.
-                Note that the Unity web player does not currently work in Google Chrome.
+                The game is hosted on the University of Texas' game development page, <a href="http://www.cs.utexas.edu/~gamedev/fall-2014/Transient-Games/Release.html">here</a>.
+                Note that the Unity web player is not functional on some browsers.
             </p>
+            <h2>Download</h2>
+            <p>
+                You can also download a stand-alone version of After by selecting your platform and pressing the download button below. This will 
+                download a .zip archive, which you can extract to run the game.
+            </p>
+            <div class="row">
+                <div class="col-xs-9 col-sm-6 col-md-5">
+                    <select id="platform-select" class="form-control">
+                        <option selected>Select a platform</option>
+                        <option>Windows</option>
+                        <option>Mac OSX</option>
+                        <option>Linux</option>
+                        <option>Android (.apk)</option>
+                    </select>
+                </div>
+                <div class="col-xs-3 col-sm-6 col-md-4">
+                    <iframe id="hidden-iframe" name="hidden-iframe" class="hidden"></iframe>
+                    <a id="download" type="button" class="btn btn-info disabled" rel="nofollow"><i class="fa fa-download"></i> Download</a>
+                </div>
+            </div>
         </section>
+        
+        <section id="source">
+            <h2>Source Code</h2>
+            <p>
+                The full source code, including Unity project and assets, is available for review <a href="https://github.com/mattschwartz/after">here</a>.
+            </p>
+        <hr>
     </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row pad-btm-sm">
+                    <div class="col-sm-12">View the site's source code <a href="https://github.com/mattschwartz/www" target="_blank">here</a>.</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">Copyright &copy; Matt Schwartz 2015</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">This page was built using <a href="http://getbootstrap.com">Bootstrap</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="pad-lg"></div>
+    
+    <!-- jQuery -->
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

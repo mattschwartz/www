@@ -69,3 +69,21 @@
   -ms-transform: translate3d(0,0,0);
 }
 
+
+
+/* Owl Carousel */
+#owl-demo .item,
+#after-shots .item {
+  margin: 3px;
+}
+#owl-demo .item img,
+#after-shots .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.img-responsive {
+    display: block;
+    margin: auto auto;
+}

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
 
     <title>StoneQuest</title>
 
@@ -16,9 +17,9 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.min.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <link href="css/owl.transitions.css" rel="stylesheet">
+    <link href="../css/owl.carousel.css" rel="stylesheet">
+    <link href="../css/owl.theme.css" rel="stylesheet">
+    <link href="../css/owl.transitions.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -56,6 +57,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="blog.html">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#source">Source Code</a>
                     </li>
                     <li>
                         <a href="#about">About</a>
@@ -101,7 +105,32 @@
                         graphics or animations. Originally, it was a very simple <a href="https://en.wikipedia.org/wiki/Roguelike">Roguelike</a>
                         written in Java using the Swing framework.
                     </p>
+                    <p>
+                        Unless otherwise noted, all art and sound assets and code were done by myself.
+                    </p>
                 </div>
+                
+                <div id="source" class="col-md-8 col-md-offset-2">
+                    <h1>Source Code</h1>
+                    <p>
+                        StoneQuest has changed a lot over the years. Several major code changes occurred which prompted me to
+                        create different repositories for the different states of the project.
+                    </p>
+                    <p>
+                        The original version of StoneQuest can be found <a href="https://github.com/mattschwartz/stonequest-original">here</a>.
+                        This version was written in Java using the Canvas framework and began before I started using Git for my personal projects,
+                        which unfortunately means a lot of major changes I made to the project were not tracked.
+                    </p>
+                    <p>
+                        The libGDX version of StoneQuest can be found <a href="https://github.com/mattschwartz/stonequest-libgdx">here</a>.
+                        This version did not make it very far into development. I realized early on that the part of the project I enjoyed most
+                        was actually writing the game engine, as opposed to the game itself.
+                    </p>
+                    <p>
+                        The current version of StoneQuest, written in C++ using SDL 2.0 is currently marked private.
+                    </p>
+                </div>
+                
                 <div id="screenshots" class="col-md-8 col-md-offset-2">
                     <h1>Progress Screenshots</h1>
                     <p>
@@ -175,7 +204,7 @@
 
         <!-- Custom Theme JavaScript -->
         <script src="js/clean-blog.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
+        <script src="../js/owl.carousel.min.js"></script>
 
         <!-- Main Page's JavaScript -->
         <script src="js/main.js"></script>

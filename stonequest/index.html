@@ -21,6 +21,7 @@
     <link href="../css/owl.theme.css" rel="stylesheet">
     <link href="../css/owl.transitions.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
+    <link href="../css/helpers.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -66,6 +67,9 @@
                     </li>
                     <li>
                         <a href="#screenshots">Screenshots</a>
+                    </li>
+                    <li>
+                        <a href="#download">Download</a>
                     </li>
                 </ul>
             </div>
@@ -117,9 +121,25 @@
                         create different repositories for the different states of the project.
                     </p>
                     <p>
-                        The original version of StoneQuest can be found <a href="https://github.com/mattschwartz/stonequest-original">here</a>.
-                        This version was written in Java using the Canvas framework and began before I started using Git for my personal projects,
-                        which unfortunately means a lot of major changes I made to the project were not tracked.
+                        The original version of StoneQuest, developed in Java using the Canvas framework is hosted on GitHub,
+                        <a href="https://github.com/mattschwartz/stonequest-original">here</a>. Because I started working on
+                        StoneQuest before I started using Git for my personal projects, a lot of major code changes were not
+                        tracked. Fortunately, I kept local backups of major versions and uploaded them here. There are four
+                        major versions on this repo, separated by branches.
+                        <ul>
+                            <li><a href="https://github.com/mattschwartz/stonequest-original/tree/v0_6_2">Version 0.6.2 <i class="fa fa-external-link"></i></a>
+                                <br>
+                                Original implementation of graphics using a very simple rasterizer.
+                            </li>
+                            <li><span style="text-decoration: line-through">Version 0.6.8</span>
+                                <br>
+                                When I find this one, I will upload it. This version was one of my favorites.
+                            </li>
+                            <li><a href="https://github.com/mattschwartz/stonequest-original/tree/v0_7_0">Version 0.7.0 <i class="fa fa-external-link"></i></a>
+                                <br>
+                                Major overhaul of original graphics, increased performance and mouse handling.
+                            </li>
+                        </ul>
                     </p>
                     <p>
                         The libGDX version of StoneQuest can be found <a href="https://github.com/mattschwartz/stonequest-libgdx">here</a>.
@@ -152,6 +172,33 @@
                         <div class="item"><img class="lazyOwl" data-src="img/progress/11.png" alt=" Image"></div>
                         <div class="item"><img class="lazyOwl" data-src="img/progress/12.png" alt=" Image"></div>
                     </div>
+                </div>
+                
+                <iframe id="invisible-iframe" name="invisible-iframe" class="hidden"></iframe>
+                
+                <div id="download" class="col-md-8 col-md-offset-2">
+                    <h1>Download &amp; Play</h1>
+                    <p>
+                        Since StoneQuest has gone through many major changes, I have made available the major versions for download.
+                        All these versions require Java 1.7+ to run. If Java Archive (.jar) files are not marked executable for you,
+                        you can run the program from the command line using <code>java -jar StoneQuest-v***.jar</code>
+                    </p>
+                    <h3>Version 0.6.2<small> (3,200 KB)</small></h3>
+                    
+                    <p>
+                        <a href="download/StoneQuest_v_0_6_2.jar" class="btn btn-primary mar-btm" target="invisible-iframe" style="padding: 5px 15px; text-decoration: none; text-transform: none;" rel="nofollow"><i class="fa fa-download"></i> Download</a>
+                        <img class="img-responsive" src="img/v062.PNG" alt="StoneQuest v0.6.2 screenshot">
+                    </p>
+                    <h3 style="text-decoration: line-through">Version 0.6.8</h3>
+                    <p>
+                        I will find this one, some day...
+                    </p>
+                    <h3>Version 0.7.0<small> (13,784 KB)</small></h3>
+                    
+                    <p>
+                        <a href="download/StoneQuest_v_0_7_0.jar" class="btn btn-primary mar-btm" target="invisible-iframe" style="padding: 5px 15px; text-decoration: none; text-transform: none;" rel="nofollow"><i class="fa fa-download"></i> Download</a>
+                        <img class="img-responsive" src="img/v070.PNG" alt="StoneQuest v0.7.0 screenshot">
+                    </p>
                 </div>
             </div>
         </div>

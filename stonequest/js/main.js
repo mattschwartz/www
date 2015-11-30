@@ -6,7 +6,7 @@ $(document).ready(function() {
     paginationSpeed : 5000,
     goToFirstSpeed : 2000,
     singleItem : true,
-    autoHeight : true,
+    autoHeight : false,
     transitionStyle:"fade",
     lazyLoad: true
   });

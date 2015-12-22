@@ -1,0 +1,319 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <title>After</title>
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/main.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/helpers.css" rel="stylesheet">
+    <link href="../css/owl.carousel.css" rel="stylesheet">
+    <link href="../css/owl.theme.css" rel="stylesheet">
+    <link href="../css/owl.transitions.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css">
+    <!-- <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../index.html">cassii.us</a>
+            </div>
+            <div class="collapse navbar-collapse" id="#">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="page-scroll">
+                        <a class="page-scroll" href="#trailer">Trailer</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a class="page-scroll" href="#story">Story &amp; Mechanics</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a class="page-scroll" href="#my-role">My Role</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a class="page-scroll" href="#play">Download</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="intro-header" style="background-image: url('img/code.JPG')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>After</h1>
+                        <hr class="small">
+                        <span class="subheading">Code Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <section id="intro">
+            <h2>Structure</h2>
+            <p>
+                We loosely followed the coding guidelines set forth by the MSDN. Scripts that
+                were used throughout the program stayed under Assets/Scripts, while more scene-specific
+                scripts would be stored in the scene's /Scripts folder. If the script was to be attached
+                to a Unity GameObject, then it was appended with the word Controller; e.g., PlayerController.cs.
+            </p>
+            <hr>
+        </section>
+        
+        <section id="puzzle">
+            <h2>Puzzle Control</h2>
+            <p>
+                A good chunk of my programming time and effort went into engineering and implementing
+                a simple, extensible state machine for puzzles with any number of moving parts, requirements
+                and objects. The goal was the create an easy way to implement complicated puzzles and keep
+                the design simple and intuitive. 
+            </p>
+            <p>
+                The following classes play major roles in setting up puzzles and puzzle control in After
+                (click on the name to view the source file on GitHub):
+                <ul>
+                    <li>
+                        <a href="">InteractableController</a>
+                        <br>
+                        Every object that wishes to receive <code>Interact</code> messages and respond
+                        to them must inherit this class.
+                    </li>
+                    <li>
+                        <a href="">InteractableConditions</a>
+                        <br>
+                        States can transition into other states when they meet certain defined conditions. By
+                        default, every state will transition without fail into its next state.
+                    </li>
+                    <li>
+                        <a href="">InteractableState</a>
+                        <br>
+                        The base class is little more than a wrapper around its conditions and a state to transition
+                        to upon meeting its conditions. For many objects, this alone is sufficient.
+                    </li>
+                    <li>
+                        <a href="">StateType</a>
+                        <br>
+                        This is an enumerable object that contains definitions for the different types of states. It is
+                        accurate to think of a <code>StateType</code> as a constant ID associtiated with a state. The
+                        defined states are <code>Any</code>, <code>Locked</code>, <code>Unlocked</code> and <code>Spent</code>
+                    </li>
+                    <li>
+                        <a href="">Transition</a>
+                        <br>
+                        These define the scripts that are executed during state transitions.
+                    </li>
+                </ul>
+            </p>
+            <hr>
+        </section>
+        
+        <section id="mobile">
+            <h2>Mobile Control Interface</h2>
+            <p>
+                During game development, our instructor offered extra credit for teams who implemented a 
+                working mobile port for our games. Our team was the only team to implement this, which I 
+                did alone so that the rest of the team could focus on polish and other classes.
+            </p>
+            <p>
+                I kept the mobile interface code separate from the rest of the code in a single controller,
+                which you can see <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Mobile/MobileController.cs">here</a>.
+            </p>
+            <p>
+                For the controls, I decided to keep it very simple and, hopefully, intuitive to the player.
+                Movement is performed by dragging and holding a finger left or right; Jumping is performed
+                by single-tapping the screen; interacting with objects is performed by tapping on an 
+                contextual, graphical pop-up button. I also created additional artwork to teach players how to 
+                control the game on a mobile device.
+            </p>
+            <p>
+                The most difficult control I had to implement was jumping. Detecting taps is easy enough with
+                Unity, but I needed to allow users the ability to move and jump at the same time so that their
+                experience would be more fluid and less choppy. Here is what the MobileController's <code>Update()</code>
+                method looks like:
+<pre>void Update()
+{
+    DefineBounds();
+
+    if (!GUIInteraction) {
+        ProcessJump();
+    }
+
+    if (Input.touchCount == 0) { GUIInteraction = false; }
+
+    if (SceneHandler.GUILock != null) { return; }
+
+    ProcessMove();
+    ProcessLadder();
+    Unstucker();
+}</pre>
+            <p>
+                <ul>
+                    <li><code>DefineBounds()</code> simply detected the size of the screen and positioned menu buttons
+                    correctly. In hindsight, it probably should not have been in the Update method.</li>
+                    <li>
+                            <code>ProcessJump()</code> would try to decipher the user's intentions and cause the
+                        player to jump if the user single-tapped the screen outside of GUI control; i.e., it would
+                        prevent the player from jumping if the user was trying to tap through the options menu. Below
+                        is the code for this method. I am providing a snippet here because it took a bit of engineering
+                        and time to get right. There are comments in the source code, but I removed them here for brevity.
+<pre>private void ProcessJump()
+{
+    if (SceneHandler.GUILock != null) { return; }
+
+    SceneHandler.SwingDismount = false;
+
+    if (PossibleJumpTouches.Any(t => Input.GetTouch(t).phase == TouchPhase.Ended)) {
+        if (TouchedFor <= JumpThreshold) {
+            SceneHandler.SwingDismount = true;
+            Player.Jump();
+        }
+        TouchedFor = 0;
+        PossibleJumpTouches.Clear();
+        return;
+    }
+    
+    if (Input.touchCount == 0) { return; }
+
+    PossibleJumpTouches.RemoveAll(t => Input.touches.ToList()
+        .Where(s => s.phase == TouchPhase.Moved)
+        .Select(s => s.fingerId)
+        .Any(s => s == t));
+
+    int count = PossibleJumpTouches.Count;
+    PossibleJumpTouches.AddRange(Input.touches.ToList()
+        .Where(t => t.phase == TouchPhase.Began)
+        .Select(t => t.fingerId));
+
+    if (count < PossibleJumpTouches.Count) {
+        TouchedFor = 0;
+    }
+    if (PossibleJumpTouches.Count == 0) { return; }
+
+    TouchedFor += Time.deltaTime;
+}
+</pre>
+                    </li>
+                    <li><code>ProcessMove()</code> determines if the user is dragging a finger and in what direction
+                    he or she is doing so.</li>
+                    <li><code>ProcessLadder()</code> changed how drags were interpreted since the player is now
+                    moving vertically instead of horizontally.</li>
+                    <li><code>Unstucker()</code> would make sure the player did not get stuck and would reset variables
+                    used for determining drags and taps.</li>
+                </ul>
+            </p>
+            <hr>
+        </section>
+        
+        <section id="audio">
+            <h2>Audio Control</h2>
+            <p>
+                To help our sound engineer, Rob Luckfield, more easily add and modify sounds in-game, including
+                the ability to extend sounds cross-level, I created an audio management class that provided him
+                that functionality. Below, I will highlight and show key points to the AudioManager class. 
+                You can view the file, <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Audio/AudioManager.cs">here</a>.
+            </p>
+            <h4>Persistent Audio</h4>
+            <p>
+                One of the most useful features the AudioManager provided was the ability to continue playing 
+                audio across a scene transition while fading it into the background. This provided a more seamless
+                transition between scenes and allowed the game's audio landscape to be more fluid. I achieved this
+                by creating a PersistentAudioClip object that Rob would add to a scene with the audio clip he
+                wanted persisted.
+            </p>
+            <p>
+                The code is very simple and works by fading the audio clip over a user-set amount of time, in seconds
+                and linearly interpolates the volume of the clip until the fade time is over. This can be seen in this
+                code snippet in Unity's <code>Update()</code> method:
+            </p>
+<pre>void Update()
+{
+    if (!SceneUnloaded) { return; }
+
+    float f = (DurationTracker / PostLoadFadeDuration);
+    Source.volume = Mathf.Lerp(0, 1, f);
+    DurationTracker -= Time.deltaTime;
+
+    if (DurationTracker < 0) {
+        Destroy(this.gameObject);
+    }
+}
+</pre>
+            <p>
+                The AudioManager keeps track of all the PersistentAudioClips and triggers them when the scene is loaded.
+                It knows when the scene is loaded because Unity invokes the <code>Awake()</code> method. The AudioManager
+                creates a new instance of itself if it does not already exist, then begins fading out all of the 
+                PersistentAudioClips, as can be seen in this snippet:
+            </p>
+<pre>Instance.PersistentAudioClips
+    .FindAll(t => t != null)
+    .ForEach(t => {
+        DontDestroyOnLoad(t.gameObject);
+        t.FadeOut();
+    });
+</pre>
+            <p>
+                I also added simple methods that allowed finer control over the audio while not being 
+                too overwhelming for someone who was not too code literate. Each method allowed Rob the
+                ability to adjust the clip, volume and set pitch high and low values, so that the same
+                clip would sound slightly different.
+                
+                <ul>
+                    <li><code>PlayClipAtPoint(...)</code></li>
+                    <li><code>PlayMaterialFootstepAtPoint(...)</code></li>
+                    <li><code>FadeMusic(...)</code></li>
+                </ul>
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row pad-btm-sm">
+                    <div class="col-sm-12">View the site's source code <a href="https://github.com/mattschwartz/www" target="_blank">here</a>.</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">Copyright &copy; Matt Schwartz 2015</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">This page was built using <a href="http://getbootstrap.com">Bootstrap</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="pad-lg"></div>
+    
+    <!-- jQuery -->
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

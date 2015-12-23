@@ -40,16 +40,16 @@
             <div class="collapse navbar-collapse" id="#">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="page-scroll">
-                        <a class="page-scroll" href="#trailer">Trailer</a>
+                        <a class="page-scroll" href="#puzzle">Puzzle Control</a>
                     </li>
                     <li class="page-scroll">
-                        <a class="page-scroll" href="#story">Story &amp; Mechanics</a>
+                        <a class="page-scroll" href="#mobile">Mobile Implementation</a>
                     </li>
                     <li class="page-scroll">
-                        <a class="page-scroll" href="#my-role">My Role</a>
+                        <a class="page-scroll" href="#audio">Audio Control</a>
                     </li>
                     <li class="page-scroll">
-                        <a class="page-scroll" href="#play">Download</a>
+                        <a class="page-scroll" href="#source">Source Code</a>
                     </li>
                 </ul>
             </div>
@@ -69,90 +69,178 @@
             </div>
         </div>
     </header>
-    
+
     <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <section id="intro">
             <h2>Structure</h2>
             <p>
-                We loosely followed the coding guidelines set forth by the MSDN. Scripts that
-                were used throughout the program stayed under Assets/Scripts, while more scene-specific
-                scripts would be stored in the scene's /Scripts folder. If the script was to be attached
-                to a Unity GameObject, then it was appended with the word Controller; e.g., PlayerController.cs.
+                We mostly followed the coding guidelines set forth by the MSDN. Scripts that were used throughout the program stayed under
+                Assets/Scripts, while more scene-specific scripts would be stored in the scene's /Scripts folder. If the
+                script was to be attached to a Unity GameObject, then it was appended with the word Controller; e.g., PlayerController.cs.
             </p>
             <hr>
         </section>
-        
+
         <section id="puzzle">
             <h2>Puzzle Control</h2>
             <p>
-                A good chunk of my programming time and effort went into engineering and implementing
-                a simple, extensible state machine for puzzles with any number of moving parts, requirements
-                and objects. The goal was the create an easy way to implement complicated puzzles and keep
-                the design simple and intuitive. 
+                A good chunk of my programming time and effort went into engineering and implementing a simple, extensible state machine
+                for puzzles with any number of moving parts, requirements and objects. The goal was the create an easy way
+                to implement complicated puzzles and keep the design simple and intuitive.
             </p>
             <p>
-                The following classes play major roles in setting up puzzles and puzzle control in After
-                (click on the name to view the source file on GitHub):
+                The following classes play major roles in setting up puzzles and puzzle control in After (click on the name to view the source
+                file on GitHub):
                 <ul>
                     <li>
-                        <a href="">InteractableController</a>
-                        <br>
-                        Every object that wishes to receive <code>Interact</code> messages and respond
-                        to them must inherit this class.
+                        <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Interactable/InteractableController.cs">InteractableController</a>
+                        <br> Every object that wishes to receive <code>Interact</code> messages and respond to them must inherit
+                        this class. The <code>virtual Interact</code> method determines the object's state and executes scripts
+                        on transition between states if the requirements are met for that state transition. Here is the code for the
+                        <code>Interact</code> method:
+<pre>public virtual void Interact()
+{
+    StateType? newState = null;
+
+    switch (CurrentState) {
+        case StateType.Locked:
+            if (LockedState != null) {
+                newState = LockedState.Transition();
+            }
+            break;
+        case StateType.Unlocked:
+            if (UnlockedState != null) {
+                newState = UnlockedState.Transition();
+            }
+            break;
+        case StateType.Spent:
+            if (SpentState != null) {
+                newState = SpentState.Transition();
+            }
+            break;
+    }
+
+    newState = newState ?? CurrentState;
+
+    // Lookup transition hook for (currentstate, newstate) transition
+    ReadTransitions(CurrentState, (StateType)newState);
+
+    CurrentState = (StateType)newState;
+}
+</pre> 
                     </li>
                     <li>
-                        <a href="">InteractableConditions</a>
-                        <br>
-                        States can transition into other states when they meet certain defined conditions. By
-                        default, every state will transition without fail into its next state.
+                        <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Interactable/Conditions/InteractableConditions.cs">InteractableConditions</a>
+                        <br> States can transition into other states when they meet certain defined conditions. By default, every
+                        state will transition without fail into its next state.
                     </li>
                     <li>
-                        <a href="">InteractableState</a>
-                        <br>
-                        The base class is little more than a wrapper around its conditions and a state to transition
-                        to upon meeting its conditions. For many objects, this alone is sufficient.
+                        <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Interactable/InteractableState.cs">InteractableState</a>
+                        <br> The base class is little more than a wrapper around its conditions and a state to transition to
+                        upon meeting its conditions. For many objects, this alone is sufficient.
                     </li>
                     <li>
-                        <a href="">StateType</a>
-                        <br>
-                        This is an enumerable object that contains definitions for the different types of states. It is
-                        accurate to think of a <code>StateType</code> as a constant ID associtiated with a state. The
-                        defined states are <code>Any</code>, <code>Locked</code>, <code>Unlocked</code> and <code>Spent</code>
+                        <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Interactable/StateType.cs">StateType</a>
+                        <br> This is an enumerable object that contains definitions for the different types of states. It is
+                        accurate to think of a <code>StateType</code> as a constant ID associated with a state. The defined
+                        states are <code>Any</code>, <code>Locked</code>, <code>Unlocked</code> and <code>Spent</code>
                     </li>
                     <li>
-                        <a href="">Transition</a>
-                        <br>
-                        These define the scripts that are executed during state transitions.
+                        <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Interactable/Transitions/Transition.cs">Transition</a>
+                        <br> These define the scripts that are executed during state transitions. After an 
+                        <code>Interactable</code> transitions from one state to another (note: it is possible for a transition 
+                        to be from and to the same state; e.g., if requirements are not met), all registered Transition
+                        scripts are executed. A "legibility" check is performed (following the "script reading" paradigm) to
+                        determine if the script should be executed during this particular transition. Here is the code for reading and executing 
+                        transition scripts. Notice that the <code>Read</code> method in <code>Transition.cs</code> is abstract, which
+                        enforces inheriting classes to implement a script.
+<pre>// In InteractableController.cs
+protected void ReadTransitions(StateType from, StateType to)
+{
+    foreach (var script in TransitionScripts.FindAll(t => t.Legible(from, to))) {
+        StartCoroutine(Read(script, from, to));
+
+        if (script.DestroyOnRead) {
+            TransitionScripts.Remove(script);
+        }
+    }
+}
+</pre> 
+<br>
+<pre>// In Transition.cs
+public bool Legible(StateType from, StateType to)
+{
+    if (From == StateType.Any) {
+        from = StateType.Any;
+    }
+
+    if (To == StateType.Any) {
+        to = StateType.Any;
+    }
+
+    return From == from && To == to;
+}
+
+public abstract void Read(StateType fromState, StateType toState);
+</pre>
                     </li>
                 </ul>
             </p>
+
+            <h4>Process</h4>
+            <p>
+                When the player presses the interact button (E), Unity's Physics2D engine finds all objects the player is overlapping and
+                returns only those that are interactable. Each of these interactables is then sent an <code>Interact</code>                
+                message. Interactables may choose to define their own response to <code>Interact</code>. The
+                <code>InteractableController</code> must manage in which state the Interactable exists so that it can execute
+                the correct state. That state will determine, based on conditions, if the Interactable moves to another state,
+                which it also defines. Transition hooks are inserted to be executed during any kind of state transition (L
+                --> L, L --> UL, etc).
+            </p>
+
+            <h4>States</h4>
+            <p>
+                As previously mentioned, the Framework defines up to three states for an Interactable: Locked, Unlocked and Spent.
+                The names are mostly irrelevant and can be used to implement any states as demanded by the object. Each state
+                must inherit the <code>InteractableState</code> class. The Framework closely resembles a state diagram: 
+            </p>
+            <ul>
+                <li>There are several states defined but an Interactable can exist in only one state at a time</li>
+                <li>A state can retain any pertinent information that it needs</li>
+                <li>States can transition into other states, or to themselves based on certain Conditions</li>
+                <li>Transitions can be hooked into the process of transitioning between two states to execute any amount of code</li>
+            </ul>
+            
+            <h4>Transitions</h4>
+            <p>
+                An <code>Interactable</code> can have any number of transitions. Transitions can execute any code as desired, but a few notable types of transitions have already been defined: AudioTransition, ObservationTransition, AnimatorTransition, ItemSpawnTransition and TeleportTransition. To define a transition, a <code>From</code> and <code>To</code> <code>StateType</code> must be defined as well as its <code>Read</code> function overridden (this is where the script code goes). Finally, it must be hooked into the <code>InteractableController</code> by dragging the transition GameObject onto an element in the list of transitions.
+            </p>
             <hr>
         </section>
-        
+
         <section id="mobile">
             <h2>Mobile Control Interface</h2>
             <p>
-                During game development, our instructor offered extra credit for teams who implemented a 
-                working mobile port for our games. Our team was the only team to implement this, which I 
-                did alone so that the rest of the team could focus on polish and other classes.
+                During game development, our instructor offered extra credit for teams who implemented a working mobile port for our games.
+                Our team was the only team to implement this, which I did alone so that the rest of the team could focus
+                on polish and other classes.
             </p>
             <p>
-                I kept the mobile interface code separate from the rest of the code in a single controller,
-                which you can see <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Mobile/MobileController.cs">here</a>.
+                I kept the mobile interface code separate from the rest of the code in a single controller, which you can see
+                <a
+                href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Mobile/MobileController.cs">here</a>.
             </p>
             <p>
-                For the controls, I decided to keep it very simple and, hopefully, intuitive to the player.
-                Movement is performed by dragging and holding a finger left or right; Jumping is performed
-                by single-tapping the screen; interacting with objects is performed by tapping on an 
-                contextual, graphical pop-up button. I also created additional artwork to teach players how to 
-                control the game on a mobile device.
+                For the controls, I decided to keep it very simple and, hopefully, intuitive to the player. Movement is performed by dragging
+                and holding a finger left or right; Jumping is performed by single-tapping the screen; interacting with objects
+                is performed by tapping on a contextual, graphical pop-up button. I also created additional artwork to teach
+                players how to control the game on a mobile device.
             </p>
             <p>
-                The most difficult control I had to implement was jumping. Detecting taps is easy enough with
-                Unity, but I needed to allow users the ability to move and jump at the same time so that their
-                experience would be more fluid and less choppy. Here is what the MobileController's <code>Update()</code>
-                method looks like:
-<pre>void Update()
+                The most difficult control I had to implement was jumping. Detecting taps is easy enough with Unity, but I needed to allow
+                users the ability to move and jump at the same time so that their experience would be more fluid and less
+                choppy. Here is what the MobileController's <code>Update()</code> method looks like:
+                <pre>void Update()
 {
     DefineBounds();
 
@@ -168,17 +256,17 @@
     ProcessLadder();
     Unstucker();
 }</pre>
-            <p>
-                <ul>
-                    <li><code>DefineBounds()</code> simply detected the size of the screen and positioned menu buttons
-                    correctly. In hindsight, it probably should not have been in the Update method.</li>
-                    <li>
-                            <code>ProcessJump()</code> would try to decipher the user's intentions and cause the
-                        player to jump if the user single-tapped the screen outside of GUI control; i.e., it would
-                        prevent the player from jumping if the user was trying to tap through the options menu. Below
-                        is the code for this method. I am providing a snippet here because it took a bit of engineering
-                        and time to get right. There are comments in the source code, but I removed them here for brevity.
-<pre>private void ProcessJump()
+                <p>
+                    <ul>
+                        <li><code>DefineBounds()</code> simply detected the size of the screen and positioned menu buttons correctly.
+                            In hindsight, it probably should not have been in the Update method.</li>
+                        <li>
+                            <code>ProcessJump()</code> would try to decipher the user's intentions and cause the player to
+                            jump if the user single-tapped the screen outside of GUI control; i.e., it would prevent the
+                            player from jumping if the user was trying to tap through the options menu. Below is the code
+                            for this method. I am providing a snippet here because it took a bit of engineering and time
+                            to get right. There are comments in the source code, but I removed them here for brevity.
+                            <pre>private void ProcessJump()
 {
     if (SceneHandler.GUILock != null) { return; }
 
@@ -214,40 +302,38 @@
     TouchedFor += Time.deltaTime;
 }
 </pre>
-                    </li>
-                    <li><code>ProcessMove()</code> determines if the user is dragging a finger and in what direction
-                    he or she is doing so.</li>
-                    <li><code>ProcessLadder()</code> changed how drags were interpreted since the player is now
-                    moving vertically instead of horizontally.</li>
-                    <li><code>Unstucker()</code> would make sure the player did not get stuck and would reset variables
-                    used for determining drags and taps.</li>
-                </ul>
-            </p>
-            <hr>
+                        </li>
+                        <li><code>ProcessMove()</code> determines if the user is dragging a finger and in what direction he or
+                            she is doing so.</li>
+                        <li><code>ProcessLadder()</code> changed how drags were interpreted since the player is now moving vertically
+                            instead of horizontally.</li>
+                        <li><code>Unstucker()</code> would make sure the player did not get stuck and would reset variables used
+                            for determining drags and taps.</li>
+                    </ul>
+                </p>
+                <hr>
         </section>
-        
+
         <section id="audio">
             <h2>Audio Control</h2>
             <p>
-                To help our sound engineer, Rob Luckfield, more easily add and modify sounds in-game, including
-                the ability to extend sounds cross-level, I created an audio management class that provided him
-                that functionality. Below, I will highlight and show key points to the AudioManager class. 
-                You can view the file, <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Audio/AudioManager.cs">here</a>.
+                To help our sound engineer, Rob Luckfield, more easily add and modify sounds in-game, including the ability to extend sounds
+                cross-level, I created an audio management class that provided him that functionality. Below, I will highlight
+                and show key points to the AudioManager class. You can view the file, <a href="https://github.com/mattschwartz/after/blob/master/UnityProject/Assets/Scripts/Audio/AudioManager.cs">here</a>.
             </p>
             <h4>Persistent Audio</h4>
             <p>
-                One of the most useful features the AudioManager provided was the ability to continue playing 
-                audio across a scene transition while fading it into the background. This provided a more seamless
-                transition between scenes and allowed the game's audio landscape to be more fluid. I achieved this
-                by creating a PersistentAudioClip object that Rob would add to a scene with the audio clip he
-                wanted persisted.
+                One of the most useful features the AudioManager provided was the ability to continue playing audio across a scene transition
+                while fading it into the background. This provided a more seamless transition between scenes and allowed
+                the game's audio landscape to be more fluid. I achieved this by creating a <code>PersistentAudioClip</code> object that
+                Rob would add to a scene with the audio clip he wanted persisted.
             </p>
             <p>
-                The code is very simple and works by fading the audio clip over a user-set amount of time, in seconds
-                and linearly interpolates the volume of the clip until the fade time is over. This can be seen in this
-                code snippet in Unity's <code>Update()</code> method:
+                The code is very simple and works by fading the audio clip over a user-set amount of time, in seconds and linearly interpolates
+                the volume of the clip until the fade time is over. This can be seen in this code snippet in Unity's <code>Update()</code>                
+                method:
             </p>
-<pre>void Update()
+            <pre>void Update()
 {
     if (!SceneUnloaded) { return; }
 
@@ -261,12 +347,12 @@
 }
 </pre>
             <p>
-                The AudioManager keeps track of all the PersistentAudioClips and triggers them when the scene is loaded.
-                It knows when the scene is loaded because Unity invokes the <code>Awake()</code> method. The AudioManager
-                creates a new instance of itself if it does not already exist, then begins fading out all of the 
-                PersistentAudioClips, as can be seen in this snippet:
+                The AudioManager keeps track of all the PersistentAudioClips and triggers them when the scene is loaded. It knows when the
+                scene is loaded because Unity invokes the <code>Awake()</code> method. The AudioManager creates
+                a new instance of itself if it does not already exist, then begins fading out all of the PersistentAudioClips,
+                as can be seen in this snippet:
             </p>
-<pre>Instance.PersistentAudioClips
+            <pre>Instance.PersistentAudioClips
     .FindAll(t => t != null)
     .ForEach(t => {
         DontDestroyOnLoad(t.gameObject);
@@ -274,18 +360,28 @@
     });
 </pre>
             <p>
-                I also added simple methods that allowed finer control over the audio while not being 
-                too overwhelming for someone who was not too code literate. Each method allowed Rob the
-                ability to adjust the clip, volume and set pitch high and low values, so that the same
-                clip would sound slightly different.
-                
+                I also added simple methods that allowed finer control over the audio while not being too overwhelming for someone who was
+                not too code literate. Each method allowed Rob the ability to adjust the clip, volume and set pitch high
+                and low values, so that the same clip would sound slightly different.
+
                 <ul>
                     <li><code>PlayClipAtPoint(...)</code></li>
                     <li><code>PlayMaterialFootstepAtPoint(...)</code></li>
                     <li><code>FadeMusic(...)</code></li>
                 </ul>
             </p>
+            <hr>
         </section>
+        
+        <section id="source">
+            <h1>Source Code</h1>
+            <p>
+                The full source code, including assets and Unity project are hosted publicly 
+                on GitHub <a href="https://github.com/mattschwartz/after">here</a>.
+            </p>
+        </section>
+        <hr>
+    <div class="mar-top-xlg"></div>
     </div>
 
     <!-- Footer -->
@@ -306,7 +402,7 @@
         </div>
     </footer>
     <div class="pad-lg"></div>
-    
+
     <!-- jQuery -->
     <script src="../js/jquery-1.11.3.min.js"></script>
     <!-- Bootstrap Core JavaScript -->

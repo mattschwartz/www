@@ -1,0 +1,67 @@
+.home section {
+    background-color: #222222;
+}
+
+.home .welcome-fold {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: #00a077;
+}
+
+.home .thicc-line {
+    padding: 0;
+    max-width: 350px;
+    border: 0;
+    border-top: solid 2px;
+    text-align: center;
+}
+
+.nav.nav-tabs {
+    border-color: #00a077;
+}
+
+.nav.nav-tabs .nav-item.nav-link {
+    color: #18bc9c;
+    border-radius: 0;
+}
+
+.nav.nav-tabs .nav-item.nav-link:first-child {
+    border-radius: 0;
+    border-top-left-radius: 3px;
+}
+
+.nav.nav-tabs .nav-item.nav-link:last-child {
+    border-radius: 0;
+    border-top-right-radius: 3px;
+}
+
+.nav.nav-tabs .nav-item.nav-link:hover {
+    color: white;
+}
+
+.nav.nav-tabs .nav-item.nav-link:hover {
+    border-color: #00a077;
+}
+
+.nav.nav-tabs .nav-item.nav-link.active {
+    color: white;
+    background-color: #00a077;
+    border-color: #00a077;
+}
+
+.project-preview-img {
+    max-width: 100%;
+    border: 1px solid #000;
+}
+
+.timeline-item-date {
+    background: none;
+}
+
+.timeline .body-container {
+    color: rgba(255, 255, 255, 0.93);
+}
+
+.nav-item.active {
+    border-bottom: 2px solid white;
+}

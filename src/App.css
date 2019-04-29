@@ -1,0 +1,86 @@
+body {
+    color: rgba(255, 255, 255, 0.93);
+    background-color: #222222;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    width: 100%;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.88);
+}
+
+a.fancy-link {
+    color: #18bc9c;
+}
+
+a:hover {
+    color: #00bc8c;
+}
+
+.section-header {
+    padding-bottom: 0.25rem;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #555;
+}
+
+button.btn.btn-primary,
+a.btn.btn-primary {
+    color: rgba(255, 255, 255, 0.93);
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+a.btn.btn-primary:hover {
+    color: rgba(255, 255, 255, 0.93);
+}
+
+button.btn.btn-primary:hover,
+a.btn.btn-primary:hover {
+    background-color: #204d74;
+    border-color: #122b40;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.list-group-item-dark {
+    background-color: #222;
+    color: rgba(255, 255, 255, 0.93);
+}
+
+.list-group-item-dark:hover {
+    background-color: #333 !important;
+    color: rgba(255, 255, 255, 0.93) !important;
+}
+
+.text-small {
+    font-size: 0.75rem;
+}
+
+input:disabled,
+textarea:disabled {
+    background-color: gray !important;
+    border-color: gray;
+}
+
+.list-group .list-group-item-action.list-group-item-dark {
+    color: #18bc9c;
+    outline: 0;
+}
+
+.list-group .list-group-item-action.list-group-item-dark:focus {
+    background-color: #333;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

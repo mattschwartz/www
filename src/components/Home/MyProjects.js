@@ -3,7 +3,6 @@ import { Tab, Tabs } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import * as ModalModule from '../../actions/modalModule'
 import YouTubeModal, { YOUTUBE_MODAL_ID } from './YouTubeModal'
-import '../../style/myProjects.css'
 
 import stonequestPreview from '../../res/stonequestPreview.png'
 import afterPreview from '../../res/afterPreview.png'

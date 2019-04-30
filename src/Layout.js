@@ -6,7 +6,6 @@ const Layout = ({ children }) => (
     <div style={{ overflow: 'hidden' }}>
         <Header />
         {children}
-        <Footer />
     </div>
 )
 

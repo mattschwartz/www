@@ -5,9 +5,8 @@ import * as ModalModule from '../../actions/modalModule'
 
 import '../../style/modal.css'
 
-const MAX_MESSAGE_LENGTH = 255
+const MAX_MESSAGE_LENGTH = 1024
 export const MESSAGE_ME_MODAL_ID = 'www/modal/message-me-modal-id'
-
 
 const MessageSendStatus = {
     NOT_SENT: 'www/message-me-modal/NOT_SENT',
@@ -69,7 +68,7 @@ class MessageMeModal extends React.Component {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.closeModal}>Close</Button>
-                    <Button variant="primary" onClick={this.sendMessage} disabled={isDisabled}><i className="fa fa-envelope" /> Send</Button>
+                    <Button variant="primary" onClick={this.sendMessage} disabled={isDisabled}><i className="fas fa-paper-plane" /> Send</Button>
                 </Modal.Footer>
             </Modal>
         )
@@ -102,7 +101,13 @@ class MessageMeModal extends React.Component {
     }
 
     sendMessage() {
-        console.log('Sending message from ', this.state.email, 'with contents', this.state.messageText)
+        console.debug('Sending message', this.state.messageText, 'from email', this.state.email)
+
+        const self = this
+        window.setTimeout(
+            () => self.setState({ ...self.state, isDisabled: false, messageSendStatus: MessageSendStatus.SENT }),
+            5000
+        )
 
         this.setState({
             ...this.state,

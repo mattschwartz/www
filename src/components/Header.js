@@ -5,7 +5,7 @@ import avatar from '../res/avatar.png'
 
 const Header = ({ locationUrl }) => (
     <nav className="header navbar navbar-expand-lg">
-        <a className="navbar-brand" href="#/"><img className="avatar-icon" src={avatar} alt="|" /> cassᴉᴉus</a>
+        <a className="navbar-brand" href="#/"><img className="avatar-icon" src={avatar} alt="|" /> cassiius</a>
 
         <div id="navbarSupportedContent" className="collapse navbar-collapse">
             <ul className="navbar-nav mr-auto">

@@ -6,11 +6,11 @@ import * as ModalModule from '../../actions/modalModule'
 
 const ContactMe = ({ showModal }) => (
     <div>
-        <h3 className="section-header">Contact Me</h3>
+        <h3 className="section-header">Contact</h3>
 
         <ListGroup variant="flush">
             <ListGroup.Item variant="dark" action onClick={showModal}>
-                <i className="fa fa-envelope" /> Message Me
+                <i className="fas fa-comment-dots" /> Message Me
             </ListGroup.Item>
             <ListGroup.Item variant="dark" action href="https://www.linkedin.com/in/mschwartz91">
                 <i className="fab fa-linkedin" />  LinkedIn

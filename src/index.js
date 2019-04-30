@@ -27,7 +27,11 @@ ReactDOM.render(
     rootElement
 )
 
-serviceWorker.register()
+if (process.env.NODE_ENV === 'development') {
+    serviceWorker.register()
+} else {
+    serviceWorker.unregister()
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

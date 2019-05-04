@@ -72,8 +72,8 @@
     text-align: justify;
 }
 
-.nav-item.active {
-    border-bottom: 2px solid white;
+.timeline-item-dateinner {
+    color: rgba(0, 0, 0, 0.93);
 }
 
 .modal .youtube-modal {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Carousel, Col, Form, ListGroup } from 'react-bootstrap'
-import '../style/after.css'
+import '../styles/after.css'
 
 import backgroundImage from '../res/afterBackground.png'
 import trailer from '../res/trailer.mp4'

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Button, Modal } from 'react-bootstrap'
 import * as ModalModule from '../../actions/modalModule'
 
-import '../../style/modal.css'
+import '../../styles/modal.css'
 
 export const YOUTUBE_MODAL_ID = 'www/modal/youtube-modal-id'
 

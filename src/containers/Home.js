@@ -5,7 +5,7 @@ import AboutMe from '../components/Home/AboutMe'
 import ContactMe from '../components/Home/ContactMe'
 import SiteInfo from '../components/Home/SiteInfo'
 
-import '../style/home.css'
+import '../styles/home.css'
 import MessageMeModal from '../components/Home/MessageMeModal';
 
 class Home extends React.Component {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Button, Form, Modal } from 'react-bootstrap'
 import * as ModalModule from '../../actions/modalModule'
 
-import '../../style/modal.css'
+import '../../styles/modal.css'
 
 const MAX_MESSAGE_LENGTH = 1024
 export const MESSAGE_ME_MODAL_ID = 'www/modal/message-me-modal-id'

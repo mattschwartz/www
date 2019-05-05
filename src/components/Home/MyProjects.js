@@ -8,22 +8,19 @@ import stonequestPreview from '../../res/stonequestPreview.png'
 import afterPreview from '../../res/afterPreview.png'
 import rogrePreview from '../../res/rogrePreview.png'
 
-const renderStoneQuestTabPane = () => (
+const renderWorldsBetweenTabPane = () => (
     <div className="row mt-3">
         <div className="col-sm-12 col-lg-6">
-            <p>
-                <em>Note: this is not to be confused with <a className="fancy-link" href="https://stonequest.de/">this StoneQuest</a>, to which neither I nor my project have any relation.</em>
-            </p>
-            <p>StoneQuest (working title) started out as a very basic 2D roguelike written in Java in 2012 using the Swing library.
+            <p><strong>Worlds Between Blood</strong> started out as a very basic 2D roguelike written in Java in 2012 using the Swing library.
                 Over time, it has been rewritten and had all of its features reworked several times over.</p>
             <div className="btn-group full-width">
-                <a className="btn btn-primary" href="/between-worlds">Learn More</a>
+                <a className="btn btn-primary" href="/worlds-between">Learn More</a>
             </div>
             <hr className="d-block d-lg-none" />
         </div>
 
         <div className="col-sm-12 col-lg-6">
-            <img className="project-preview-img" src={stonequestPreview} alt="StoneQuest preview" />
+            <img className="project-preview-img" src={stonequestPreview} alt="Worlds Between Blood preview" />
         </div>
     </div>
 )
@@ -75,9 +72,9 @@ const MyProjects = ({ showYouTubeModal }) => (
         />
         <h1 className="section-header">My Projects</h1>
 
-        <Tabs id="projects-tabs" defaultActiveKey="stonequest">
-            <Tab eventKey="stonequest" title="StoneQuest">
-                {renderStoneQuestTabPane()}
+        <Tabs id="projects-tabs" defaultActiveKey="worlds-between">
+            <Tab eventKey="worlds-between" title="Worlds Between Blood">
+                {renderWorldsBetweenTabPane()}
             </Tab>
             <Tab eventKey="after" title="After">
                 {renderAfterTabPane()}

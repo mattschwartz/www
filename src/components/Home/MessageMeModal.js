@@ -68,7 +68,7 @@ class MessageMeModal extends React.Component {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.closeModal}>Close</Button>
-                    <Button variant="primary" onClick={this.sendMessage} disabled={isDisabled}><i className="fas fa-paper-plane" /> Send</Button>
+                    <Button variant="primary" onClick={this.sendMessage} disabled={true || isDisabled}><i className="fas fa-paper-plane" /> Send</Button>
                 </Modal.Footer>
             </Modal>
         )

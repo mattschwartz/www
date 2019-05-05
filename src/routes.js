@@ -1,5 +1,5 @@
 import After from './containers/After'
-import BetweenWorlds from './containers/BetweenWorlds'
+import WorldsBetween from './containers/WorldsBetween'
 import Home from './containers/Home'
 import ROgre from './containers/ROgre'
 
@@ -10,9 +10,9 @@ export default [
         url: '/',
     },
     {
-        component: BetweenWorlds,
-        navText: 'Blood Between Worlds',
-        url: '/between-worlds',
+        component: WorldsBetween,
+        navText: 'Worlds Between Blood',
+        url: '/worlds-between',
     },
     {
         component: After,

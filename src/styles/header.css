@@ -1,6 +1,7 @@
 .header {
     background-color: #233140;
     padding: 0.5rem 2rem;
+    border-bottom: 1px solid black;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -18,24 +19,21 @@ a.navbar-brand:hover > img.avatar-icon {
     border-color: #00bc8c;
 }
 
-.header .nav-item > a {
+.header .nav-item {
     margin-right: 0.5rem;
-    color: white;
+}
+
+.header .nav-item > a {
+    color: rgba(232, 232, 232, 0.93);
     border-bottom: 2px solid #233140;
-    transition: color .2s ease-in-out;
 }
 
 .header .nav-item:not(.active) > a:hover {
+    color: white;
     border-bottom-color: white;
-    transition: color .2s ease-in-out;
-}
-
-.header .nav-item:hover {
-    color: #00bc8c;
-    transition: color .2s ease-in-out;
 }
 
 .header .nav-item.active {
-    color: rgba(232, 232, 232, 0.93);
+    color: white;
     border-bottom: 2px solid #00bc8c;
 }

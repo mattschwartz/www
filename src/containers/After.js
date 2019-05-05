@@ -24,7 +24,7 @@ class After extends React.Component {
     render() {
         return (
             <div className="after">
-                <div className="after-backdrop" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                <div className="banner" style={{ backgroundImage: `url(${backgroundImage})` }}>
                     <div className="crt overlay"></div>
                     <div className="title-container">
                         <h1>$ after<span className="blinking-cursor">&#x2588;</span></h1>

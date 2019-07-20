@@ -23,9 +23,16 @@ namespace WebsiteLambda
 
         public void FunctionHandler(WebsiteMessageContainer input)
         {
-            string snsMessage = JsonConvert.SerializeObject(input);
-
             Console.WriteLine("Received input: {0}", input);
+
+            string snsMessage = JsonConvert.SerializeObject(new SnsMessageContainer
+            {
+                From = input.From,
+                CreatedAt = DateTime.UtcNow,
+                Message = input.Message
+            });
+
+            Console.WriteLine("Posting message: {0}", snsMessage);
 
             PublishResponse response = _snsClient.PublishAsync(_emailTopicArn, snsMessage).Result;
 

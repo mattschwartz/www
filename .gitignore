@@ -379,7 +379,3 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
-www-lambda/WebsiteLambda.Tests/obj/Release/netcoreapp2.1/WebsiteLambda.Tests.csprojAssemblyReference.cache
-www-lambda/WebsiteLambda/.vs/WebsiteLambda/v16/.suo
-www-lambda/WebsiteLambda/bin/Release/netcoreapp2.1/WebsiteLambda.dll
-www-lambda/WebsiteLambda/bin/Release/netcoreapp2.1/WebsiteLambda.pdb

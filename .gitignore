@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # cfn typescript resources
-#cfn/*/.js
+cfn/*/*.js
 *.d.ts
 
 # CDK asset staging directory

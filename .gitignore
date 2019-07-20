@@ -22,9 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# cfn typescript resources
+# CDK typescript resources
 cfn/*/*.js
-*.d.ts
+cfn/*/*.d.ts
 
 # CDK asset staging directory
 .cdk.staging
@@ -59,6 +59,8 @@ x86/
 [Aa][Rr][Mm]64/
 bld/
 [Bb]in/
+# But not cfn/bin
+!cfn/bin/
 [Oo]bj/
 [Ll]og/
 

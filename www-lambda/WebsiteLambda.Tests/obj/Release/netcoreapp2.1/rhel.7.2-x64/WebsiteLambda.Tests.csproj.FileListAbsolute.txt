@@ -1,0 +1,17 @@
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.csprojAssemblyReference.cache
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.csproj.CoreCompileInputs.cache
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.AssemblyInfoInputs.cache
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.AssemblyInfo.cs
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\xunit.runner.utility.netcoreapp10.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.deps.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.runtimeconfig.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.runtimeconfig.dev.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.pdb
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.pdb
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.csproj.CopyComplete
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda.Tests\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.Tests.pdb

@@ -1,0 +1,11 @@
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.csprojAssemblyReference.cache
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.csproj.CoreCompileInputs.cache
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.AssemblyInfoInputs.cache
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.AssemblyInfo.cs
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.deps.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.runtimeconfig.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.runtimeconfig.dev.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.pdb
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Release\netcoreapp2.1\rhel.7.2-x64\WebsiteLambda.pdb

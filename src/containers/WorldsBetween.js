@@ -31,8 +31,6 @@ class WorldsBetween extends React.Component {
 
                     <StoneQuest />
                 </div>
-
-                <div className="additional-credits">With narrative consultation from Alex Helling</div>
             </div>
         )
     }

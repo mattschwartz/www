@@ -1,0 +1,10 @@
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Debug\netcoreapp2.1\WebsiteLambda.deps.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Debug\netcoreapp2.1\WebsiteLambda.runtimeconfig.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Debug\netcoreapp2.1\WebsiteLambda.runtimeconfig.dev.json
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Debug\netcoreapp2.1\WebsiteLambda.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Debug\netcoreapp2.1\WebsiteLambda.csproj.CoreCompileInputs.cache
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Debug\netcoreapp2.1\WebsiteLambda.AssemblyInfoInputs.cache
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Debug\netcoreapp2.1\WebsiteLambda.AssemblyInfo.cs
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\bin\Debug\netcoreapp2.1\WebsiteLambda.pdb
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Debug\netcoreapp2.1\WebsiteLambda.dll
+C:\Users\Matt\Documents\GitHub\www-lambda\WebsiteLambda\obj\Debug\netcoreapp2.1\WebsiteLambda.pdb

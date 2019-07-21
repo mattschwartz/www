@@ -171,11 +171,48 @@ class MessageMeModal extends React.Component {
         })
     }
 
+    isValid(request) {
+        if (!request) {
+            this.setState({
+                ...this.state,
+                messageSendStatus: MessageSendStatus.FAILED,
+                messageFailedArgument: null,
+                messageFailedReason: 'Internal server error.',
+            })
+            return false
+        }
+        if (!request.fromEmail || request.fromEmail.indexOf('@') === -1 || request.fromEmail.indexOf('.') === -1) {
+            this.setState({
+                ...this.state,
+                messageSendStatus: MessageSendStatus.FAILED,
+                messageFailedArgument: 'fromEmail',
+                messageFailedReason: 'Please enter a valid email address.',
+            })
+            return false
+        }
+        if (!request.messageContents) {
+            this.setState({
+                ...this.state,
+                messageSendStatus: MessageSendStatus.FAILED,
+                messageFailedArgument: 'messageContents',
+                messageFailedReason: 'Please enter a lovely message.',
+            })
+            return false
+        }
+
+        return true
+    }
+
     sendMessage() {
         const requestBody = {
             fromEmail: this.state.email,
             messageContents: this.state.messageText,
         }
+
+        if (!this.isValid(requestBody)) {
+            return
+        }
+
         console.debug('Sending message', requestBody)
 
         this.setState({

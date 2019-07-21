@@ -1,17 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button, Form, Modal } from 'react-bootstrap'
+import { Alert, Button, Form, Modal } from 'react-bootstrap'
 import * as ModalModule from '../../actions/modalModule'
 
 import '../../styles/modal.css'
 
+const apigUrl = 'https://o6hwklgbe1.execute-api.us-east-1.amazonaws.com/prod/v1/messages'
+
+const MAX_MESSAGES_SENT_IN_SESSION = 2
 const MAX_MESSAGE_LENGTH = 1024
 export const MESSAGE_ME_MODAL_ID = 'www/modal/message-me-modal-id'
 
 const MessageSendStatus = {
     NOT_SENT: 'www/message-me-modal/NOT_SENT',
     SENDING: 'www/message-me-modal/SENDING',
-    SENT: 'www/message-me-modal/SENT'
+    SENT: 'www/message-me-modal/SENT',
+    FAILED: 'www/message-me-modal/FAILED',
 }
 
 class MessageMeModal extends React.Component {
@@ -25,23 +29,33 @@ class MessageMeModal extends React.Component {
             charactersRemaining: MAX_MESSAGE_LENGTH,
             isDisabled: false,
             email: null,
-            messageText: null
+            messageText: null,
+
+            emailTouched: false,
+            messageTextTouched: false,
+
+            messageFailedArgument: null,
+            messageFailedReason: null,
+
+            numMessagesSentInSession: 0,
         }
 
         this.emailTextChanged = this.emailTextChanged.bind(this)
         this.messageTextAreaChanged = this.messageTextAreaChanged.bind(this)
         this.sendMessage = this.sendMessage.bind(this)
         this.setCharsRemaining = this.setCharsRemaining.bind(this)
+        this.onModalOpened = this.onModalOpened.bind(this)
         this.closeModal = this.closeModal.bind(this)
     }
 
     render() {
         const { visibleModalId } = this.props
-        const { isDisabled } = this.state
+        const { isDisabled, messageSendStatus } = this.state
 
         return (
             <Modal
                 show={visibleModalId === MESSAGE_ME_MODAL_ID}
+                onEnter={this.onModalOpened}
                 onHide={this.closeModal}
                 centered
                 backdrop="static"
@@ -52,34 +66,91 @@ class MessageMeModal extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     {this.renderSendStatus()}
-                    <Form>
-                        <Form.Group controlId="messageMeForm.ControlInput1">
-                            <Form.Label>Your email address <strong className="text-danger">*</strong></Form.Label>
-                            <Form.Control type="email" placeholder="name@example.com" onBlur={this.emailTextChanged} disabled={isDisabled} />
-                        </Form.Group>
-                        <Form.Group controlId="messageMeForm.ControlTextarea1">
-                            <Form.Label>Message <strong className="text-danger">*</strong></Form.Label>
-                            <Form.Control as="textarea" rows="3" onBlur={this.messageTextAreaChanged} onChange={this.setCharsRemaining} maxLength="MAX_MESSAGE_LENGTH" disabled={isDisabled} />
-                            <span className="text-small">remaining {this.state.charactersRemaining} / {MAX_MESSAGE_LENGTH}</span>
-
-                            <p className="mt-3">Please don't spam me. I will spam you back.</p>
-                        </Form.Group>
-                    </Form>
+                    {this.renderForm()}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.closeModal}>Close</Button>
-                    <Button variant="primary" onClick={this.sendMessage} disabled={true || isDisabled}><i className="fas fa-paper-plane" /> Send</Button>
+                    {messageSendStatus !== MessageSendStatus.SENT
+                        && <Button variant="primary" onClick={this.sendMessage} disabled={isDisabled}><i className="fas fa-paper-plane" /> Send</Button>}
                 </Modal.Footer>
             </Modal>
+        )
+    }
+
+    onModalOpened() {
+        if (this.state.numMessagesSentInSession >= MAX_MESSAGES_SENT_IN_SESSION) {
+            this.setState({
+                ...this.state,
+                isDisabled: true,
+                messageSendStatus: MessageSendStatus.FAILED,
+                messageFailedReason: "Please don't spam me.",
+            })
+        }
+    }
+
+    renderForm() {
+        const { isDisabled, messageSendStatus } = this.state
+
+        // No reason to make it any easier to spam
+        if (messageSendStatus === MessageSendStatus.SENT) {
+            return false
+        }
+
+        return (
+            <Form>
+                <Form.Group controlId="messageMeForm.ControlInput1">
+                    <Form.Label>Your email address <strong className="text-danger">*</strong></Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="name@example.com"
+                        onBlur={this.emailTextChanged}
+                        disabled={isDisabled}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group controlId="messageMeForm.ControlTextarea1">
+                    <Form.Label>Message <strong className="text-danger">*</strong></Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        rows="3"
+                        onBlur={this.messageTextAreaChanged}
+                        onChange={this.setCharsRemaining}
+                        maxLength={MAX_MESSAGE_LENGTH}
+                        disabled={isDisabled}
+                        required
+                    />
+                    <span className="text-small">remaining {this.state.charactersRemaining} / {MAX_MESSAGE_LENGTH}</span>
+
+                    <p className="mt-3">Please don't spam me. I will spam you back.</p>
+                </Form.Group>
+            </Form>
         )
     }
 
     renderSendStatus() {
         switch (this.state.messageSendStatus) {
             case MessageSendStatus.SENDING:
-                return <span><i className="fas fa-circle-notch fa-spin" /> Sending message...</span>
+                return (
+                    <Alert variant="info">
+                        <span><i className="fas fa-circle-notch fa-spin" /> Sending message...</span>
+                    </Alert>
+                )
+
             case MessageSendStatus.SENT:
-                return <span>Message delivered!</span>
+                return (
+                    <Alert variant="success">
+                        <span><i className="fas fa-check" /> Your message has been sent!</span>
+                    </Alert>
+                )
+
+            case MessageSendStatus.FAILED:
+                return (
+                    <Alert variant="danger">
+                        <div><i className="fas fa-times" /> Failed to send message.</div>
+                        <div>Reason: {this.state.messageFailedReason || 'Internal server error.'}</div>
+                    </Alert>
+                )
+
             case MessageSendStatus.NOT_SENT:
             default:
                 return false
@@ -101,32 +172,80 @@ class MessageMeModal extends React.Component {
     }
 
     sendMessage() {
-        console.debug('Sending message', this.state.messageText, 'from email', this.state.email)
-
-        const self = this
-        window.setTimeout(
-            () => self.setState({ ...self.state, isDisabled: false, messageSendStatus: MessageSendStatus.SENT }),
-            5000
-        )
+        const requestBody = {
+            fromEmail: this.state.email,
+            messageContents: this.state.messageText,
+        }
+        console.debug('Sending message', requestBody)
 
         this.setState({
             ...this.state,
             isDisabled: true,
-            messageSendStatus: MessageSendStatus.SENDING
+            messageSendStatus: MessageSendStatus.SENDING,
+            messageFailedArgument: null,
+            messageFailedReason: null,
         })
+
+        fetch(apigUrl, {
+            method: 'POST',
+            mode: 'cors',
+            referrerPolicy: 'origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': '*/*',
+            },
+            body: JSON.stringify(requestBody),
+        })
+            .then(
+                async res => {
+                    const responseModel = await res.json();
+                    console.debug('Received response:', responseModel)
+
+                    if (res.ok) {
+                        this.setState({
+                            ...this.state,
+                            isDisabled: true,
+                            messageSendStatus: MessageSendStatus.SENT,
+                            messageFailedArgument: null,
+                            messageFailedReason: null,
+                            numMessagesSentInSession: this.state.numMessagesSentInSession + 1,
+                        })
+                    } else {
+                        this.setState({
+                            ...this.state,
+                            isDisabled: false,
+                            messageSendStatus: MessageSendStatus.FAILED,
+                            messageFailedArgument: responseModel.failedArgument,
+                            messageFailedReason: responseModel.reason,
+                        })
+                    }
+                },
+                err => {
+                    console.error('Request failed:', err)
+                    this.setState({
+                        ...this.state,
+                        isDisabled: false,
+                        messageSendStatus: MessageSendStatus.FAILED,
+                        messageFailedArgument: null,
+                        messageFailedReason: err,
+                    })
+                }
+            )
     }
 
     messageTextAreaChanged(e) {
         this.setState({
             ...this.state,
-            messageText: e.target.value
+            messageText: e.target.value,
+            messageTextTouched: true,
         })
     }
 
     emailTextChanged(e) {
         this.setState({
             ...this.state,
-            email: e.target.value
+            email: e.target.value,
+            emailTouched: true,
         })
     }
 

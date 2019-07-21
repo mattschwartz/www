@@ -11,11 +11,12 @@
     "configuration" : "Release",
     "framework"     : "netcoreapp2.1",
     "function-runtime" : "dotnetcore2.1",
-    "function-memory-size" : 128,
+    "function-memory-size" : 256,
     "function-timeout"     : 30,
     "function-handler"     : "WebsiteLambda::WebsiteLambda.Function::FunctionHandler",
-    "function-name"        : "www-lambda",
-    "function-role"        : "arn:aws:iam::956902759044:role/lambda_exec_www-lambda",
+    "function-name"        : "WebsiteStack-MessageMeLambdaAD5E50B5-AUMW33XPWMBB",
+    "function-role"        : "arn:aws:iam::956902759044:role/WebsiteStack-MessageMeLambdaExecutionRoleBB32E753-134EA4OAMMB7A",
     "tracing-mode"         : "PassThrough",
-    "environment-variables" : "\"snsEmailTopicArn\"=\"arn:aws:sns:us-east-1:956902759044:message-me-modal\""
+    "environment-variables" : "",
+    "function-description"  : ""
 }

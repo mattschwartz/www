@@ -22,6 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+aws-lambda-tools-defaults.json
+
 # CDK typescript resources
 cfn/*/*.js
 cfn/*/*.d.ts
